@@ -863,7 +863,7 @@ int main()
     while(menu!= 4){    
       switch(menu){
         case 1:
-        system("clear");
+        //system("clear");
         chargeEssentials(&ppbLem, &ppbLav, &ppbRos, &ppbMin);
 
         freebie(&lemonDrops, &lavenderDrops, &rosemaryDrops, &mintDrops, &clearMinds,&energyBooster, &diffuserCalming);
@@ -871,7 +871,7 @@ int main()
         showAvailable(&cash, &charge, &clearMinds, &energyBooster, &diffuserCalming, &avblCM, &selCM, &avblEB, &selEB, &avblC, &selC, &avblLem, &selLem, &avblLav, &selLav, &avblRos, &selRos , &avblMin, &selMin, &ppbLem, &ppbLav, &ppbRos, &ppbMin, &lemonDrops, &lavenderDrops, &rosemaryDrops, &mintDrops, &currentLocation, &productionCharge);
         while(1){
           int q;
-          for (q = 0; q <day ; q++){
+          for (q = 0; q <day+1 ; q++){
             
             printf("\n===============[Game Stats]=================\n");
             printf("\tCurrent City: %s\n", cityLocations[currentLocation]);
@@ -1051,7 +1051,7 @@ int main()
                   }
                   else{} 
                 }
-                  system("clear");
+                  //system("clear");
                   freebie(&lemonDrops, &lavenderDrops, &rosemaryDrops, &mintDrops, &clearMinds,&energyBooster, &diffuserCalming);
 
                   chargeEssentials(&ppbLem, &ppbLav, &ppbRos, &ppbMin);
@@ -1070,7 +1070,7 @@ int main()
             else if (option == 6)//Exit
             {
               
-              printf("=============[Game Summary]=================\n");
+              printf("\n=============[Game Summary]=================\n");
               printf("\tCurrent City: %s\n", cityLocations[currentLocation]);
               printf("\tCurrent Day : #%d\n", currentDay);    
               printf("\tCash on-hand: $%d\n", cash);
@@ -1084,7 +1084,18 @@ int main()
               return 0;
             }
           }
-          
+              printf("\n=============[Game Summary]=================\n");
+              printf("\tCurrent City: %s\n", cityLocations[currentLocation]);
+              printf("\tCurrent Day : #%d\n", currentDay);    
+              printf("\tCash on-hand: $%d\n", cash);
+              printf("\tCurrent debt: $%d\n", loan);
+              printf("============================================\n\n");
+              printf("Enter your nickname: ");
+              char nickname[20];
+              scanf("%s",nickname);
+              int standing = cash - loan;
+              return 0;
+
       break;
 
       case 2:
