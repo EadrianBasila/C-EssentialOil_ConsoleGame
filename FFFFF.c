@@ -1,3 +1,4 @@
+/*
 
 #include <stdio.h> 
 #include <stdlib.h> 
@@ -6,59 +7,6 @@
 
 
 //price ng oils
-void freebie(int*lemonDrops, int*lavenderDrops, int*rosemaryDrops, int*mintDrops, int*clearMinds, int *energyBooster, int*diffuserCalming){
-
-  int freebieChance = (rand() % (100 - 1 + 1)) + 1; 
-      
-      if (freebieChance >= 1 && freebieChance <= 30){ 
-        printf("\n\t[*] You won a free Diffuser Oil :) \n");
-          int diffusersChance = (rand() % (3 - 1 + 1)) + 1;
-          //printf("Val: %d",diffusersChance);
-            if (diffusersChance == 1){
-              *clearMinds += 1;
-              printf("\n\t[+] Free Clear Minds Bottle.");
-             }
-            else if (diffusersChance == 2){
-              *energyBooster += 1;
-              printf("\n\t[+] Free Energy Booster Bottle.");
-             }
-            else if (diffusersChance == 3){
-              *diffuserCalming += 1;
-              printf("\n\t[+] Free Calming Bottle.");
-             }
-            else{}
-      }
-
-      else if (freebieChance >= 31 && freebieChance <= 71){ 
-        printf("\n\t[*] You won a free Essential Oil :) \n");
-        int essentialsChance = (rand() % (4 - 1 + 1)) + 1;
-        //printf("Val: %d",essentialsChance);
-          if (essentialsChance == 1){
-            *lemonDrops += 10;
-            printf("\n\t[+] Free Lemon Oil Bottle.");
-           }
-          else if (essentialsChance == 2){
-            *lavenderDrops += 10;
-            printf("\n\t[+] Free Lavender Oil Bottle.");
-           }
-          else if (essentialsChance == 3){
-            *rosemaryDrops += 10;
-             printf("\n\t[+] Free Rosemary Oil Bottle.");
-           }
-          else if (essentialsChance == 4){
-            *mintDrops += 10;
-             printf("\n\t[+] Free Mint Oil Bottle.");
-           }
-          else{}
-      }
-
-      else{
-        //No Freebie
-      }
-   
-   }
-
-
 int chargeEssentials(int*ppbLem, int*ppbLav, int*ppbRos, int*ppbMin) 
 {
   
@@ -83,7 +31,6 @@ int chargeEssentials(int*ppbLem, int*ppbLav, int*ppbRos, int*ppbMin)
     
    int chargeValues[4];
 
-    char essentialOils[][20] = {"Lemon","Lavender","Rosemary", "Mint"};
     for(int i = 0; i < 4; ++i) {
       
       charge = oilCharges[i];
@@ -117,7 +64,7 @@ int chargeEssentials(int*ppbLem, int*ppbLav, int*ppbRos, int*ppbMin)
       }   
 
       else{}
-      //printf("\n%8s Generated Value:  %d", essentialOils[i], charge);  
+      //printf("\nGenerated Value:  %d", charge);  
    }
 
 
@@ -125,7 +72,7 @@ int chargeEssentials(int*ppbLem, int*ppbLav, int*ppbRos, int*ppbMin)
   *ppbLav = chargeValues[1];
   *ppbRos = chargeValues[2];
   *ppbMin = chargeValues[3];
-  printf("\n\n\t\t[New Prices Generated]");
+  printf("\n\t\t[New Prices Generated]");
 
   return 0;
 } 
@@ -202,8 +149,7 @@ printf("\t||_||||||||||_|||||||||||||_||||||||||_||\n");
                     *cash -= chargeValues[0];
                     printf("\n[*] Succesfully bought Lemon Oil.");
                     printf("\n[$] Current Money : %d", *cash);
-                    printf("\nTotal Lemon Oil Bottles: %d", (*lemonDrops/10)); 
-                    printf("\nTotal Lemon Oil Drops: %d\n", *lemonDrops); 
+                    printf("\nTotal Lemon Drops: %d\n", *lemonDrops);  
                   }
                   else{
                     printf("\n[!]You do not have enough money to buy the oil.\n");
@@ -224,8 +170,7 @@ printf("\t||_||||||||||_|||||||||||||_||||||||||_||\n");
                     *cash -= chargeValues[1];
                     printf("\n[*] Succesfully bought Lavender Oil.");
                     printf("\n[$] Current Money : %d", *cash);
-                    printf("\nTotal Lavender Oil Bottles: %d\n", (*lavenderDrops/10));
-                    printf("\nTotal Lavender Oil Drops: %d\n", *lavenderDrops);
+                    printf("\nTotal Lavender Drops: %d\n", *lavenderDrops);
                   }
                   else{
                     printf("\n[!]You do not have enough money to buy the oil.\n");
@@ -246,8 +191,7 @@ printf("\t||_||||||||||_|||||||||||||_||||||||||_||\n");
                     *cash -= chargeValues[2];
                     printf("\n[*] Succesfully bought Rosemary Oil.");
                     printf("\n[$] Current Money : %d", *cash);
-                    printf("\nTotal Rosemary Oil Bottles: %d\n", (*rosemaryDrops/10));
-                    printf("\nTotal Rosemary Oil Drops: %d\n", *rosemaryDrops);  
+                    printf("\nTotal Rosemary Drops: %d\n", *rosemaryDrops);  
                   }
                   else{
                     printf("\n[!]You do not have enough money to buy the oil.\n");
@@ -268,8 +212,7 @@ printf("\t||_||||||||||_|||||||||||||_||||||||||_||\n");
                     *cash -= chargeValues[3];
                     printf("\n[*] Succesfully bought Mint Oil.");
                     printf("\n[$] Current Money : %d", *cash);
-                    printf("\nTotal Mint Oil Bottles: %d\n", (*mintDrops/10));
-                    printf("\nTotal Mint Oil Drops: %d\n", *mintDrops);  
+                    printf("\nTotal Mint Drops: %d\n", *mintDrops);  
                   }
                   else{
                     printf("\n[!]You do not have enough money to buy the oil.\n");
@@ -324,7 +267,7 @@ printf("\t||_||||||||||_|||||||||||||_||||||||||_||\n");
   int a,b = 4;
   for (a = 0; a <4 ; a++){
      if (chargeValues[a] != 0){
-       printf("\n %d) %8s \t\t $%8d \t\t $%d", a+1, essentialOils[a], chargeValues[a], chargeValues[a]/10);
+       printf("\n %d)  %8s \t\t\t $%d \t\t $%d", a+1, essentialOils[a], chargeValues[a], chargeValues[a]/10);
      }
      else{
        printf("\n %d)  %8s   [ Not Available ] ", a+1, essentialOils[a]);
@@ -446,7 +389,7 @@ printf("\t||_||||||||||_|||||||||||||_||||||||||_||\n");
 
 
 //INVENTORY
-int showAvailable(int*cash, int*charge, int*clearMinds, int*energyBooster, int*diffuserCalming, int*avblCM, int*selCM, int*avblEB, int*selEB, int*avblC, int*selC, int*avblLem, int*selLem, int*avblLav, int*selLav, int*avblRos, int*selRos , int*avblMin, int*selMin, int*ppbLem, int*ppbLav, int*ppbRos, int*ppbMin, int*lemonDrops, int*lavenderDrops, int*rosemaryDrops, int*mintDrops, int*currentLocation, int*productionCharge){
+int showAvailable(int*cash, int*charge, int*clearMinds, int*energyBooster, int*diffuserCalming, int*avblCM, int*selCM, int*avblEB, int*selEB, int*avblC, int*selC, int*avblLem, int*selLem, int*avblLav, int*selLav, int*avblRos, int*selRos , int*avblMin, int*selMin, int*ppbLem, int*ppbLav, int*ppbRos, int*ppbMin, int*lemonDrops, int*lavenderDrops, int*rosemaryDrops, int*mintDrops){
 
   int testCash = *cash;
   char essentialOils[][20] = {"Lemon","Lavender","Rosemary", "Mint"};
@@ -467,7 +410,7 @@ int showAvailable(int*cash, int*charge, int*clearMinds, int*energyBooster, int*d
 
   //Checks how many bottles of essential oil he can buy
 
-  printf("\n[Testing Max numbers for Essential Oils]\n");
+  printf("\n\n[Testing Max numbers for Essential Oils]\n");
     for(int i = 0; i < 4; ++i) {
       int testA = testCash;
       int testPriceA = pricePerBottles[i];
@@ -490,37 +433,20 @@ int showAvailable(int*cash, int*charge, int*clearMinds, int*energyBooster, int*d
        }
     
     } 
-   printf("\n[Testing Done]\n");
+   printf("\n\n[Testing Done]\n");
   //updates generated values for maximum number of essential oil bottles to main 
   *avblLem = availableEsBottles[0];
   *avblLav = availableEsBottles[1];
   *avblRos = availableEsBottles[2];
   *avblMin = availableEsBottles[3];
-  
-
-  if ( *currentLocation == 0){ //Manila
-      int pCharge = (rand() % (30 - 20 + 1)) + 20;
-      *productionCharge = pCharge;
-  }
-  else if ( *currentLocation == 1){ //Makati
-      int pCharge = (rand() % (100 - 80 + 1)) + 80;
-      *productionCharge = pCharge;
-  }
-  else if ( *currentLocation == 2){ //Alabang
-      int pCharge = (rand() % (90 - 70 + 1)) + 70;
-      *productionCharge = pCharge;
-  }
-  else if ( *currentLocation == 3){ //Quezon City
-      int pCharge = (rand() % (60 - 40 + 1)) + 40;
-      *productionCharge = pCharge;
-  }
-
 
   return 0;
 }
 
 //make
-void makeDiffusers(int *lemonDrops, int *lavenderDrops, int *rosemaryDrops, int *mintDrops, int *cash, int *currentLocation, int *clearMinds, int *energyBooster, int *diffuserCalming, int*avblCM, int*avblEB, int*avblC, int*productionCharge){
+void makeDiffusers(int *lemonDrops, int *lavenderDrops, int *rosemaryDrops, int *mintDrops, int *cash, int *currentLocation, int *clearMinds, int *energyBooster, int *diffuserCalming, int*avblCM, int*avblEB, int*avblC){
+
+  int productionCharge;
 
   int lemDrop = *lemonDrops; 
   int lavDrop = *lavenderDrops; 
@@ -534,7 +460,7 @@ void makeDiffusers(int *lemonDrops, int *lavenderDrops, int *rosemaryDrops, int 
   int invMinDrops = *mintDrops;
 
 
-  printf("\n[Testing Max numbers for Diffuser Oils]\n");
+  printf("\n\n[Testing Max numbers for Diffuser Oils]\n");
   char diffuserOils[][20] = {"ClearMinds","EnergyBooster","Calming"};
   int e= 0; 
   for(int i = 0; i < 3; ++i) {
@@ -577,10 +503,28 @@ void makeDiffusers(int *lemonDrops, int *lavenderDrops, int *rosemaryDrops, int 
 
   }
   //updates generated values for maximum number of diffuser oils to main
-  printf("\n[Testing Done]\n");
+  printf("\n\n[Testing Done]\n");
   *avblCM = availableDfBottles[0];
   *avblEB = availableDfBottles[1];
   *avblC = availableDfBottles[2];
+
+
+  if ( *currentLocation == 0){ //Manila
+      int pCharge = (rand() % (30 - 20 + 1)) + 20;
+      productionCharge = pCharge;
+  }
+  else if ( *currentLocation == 1){ //Makati
+      int pCharge = (rand() % (100 - 80 + 1)) + 80;
+      productionCharge = pCharge;
+  }
+  else if ( *currentLocation == 2){ //Alabang
+      int pCharge = (rand() % (90 - 70 + 1)) + 70;
+      productionCharge = pCharge;
+  }
+  else if ( *currentLocation == 3){ //Quezon City
+      int pCharge = (rand() % (60 - 40 + 1)) + 40;
+      productionCharge = pCharge;
+  }
 
   int option;
 
@@ -599,7 +543,7 @@ void makeDiffusers(int *lemonDrops, int *lavenderDrops, int *rosemaryDrops, int 
   printf("      ^~^~                                ~^~^     \n");
 
   printf("\n            [City Diffusers Factory]\n");
-  printf("\nProduction Charge: $ %d\n", *productionCharge);
+  printf("\nProduction Charge: $ %d\n", productionCharge);
   printf("---------------------------------------------\n");
   printf("     Diffuser        |     Available bottles  \n");
   printf("       Oils          |    based on inventory \n");
@@ -613,7 +557,7 @@ void makeDiffusers(int *lemonDrops, int *lavenderDrops, int *rosemaryDrops, int 
   int a,b;
 
   while (option != 4) {
-      *cash -= *productionCharge;
+      *cash -= productionCharge;
       switch(option){
         
         case 1:
@@ -724,9 +668,9 @@ void sellDiffuser (int*cash, int*ppbLem, int*ppbLav, int*ppbRos, int*ppbMin, int
   printf("     Diffuser       |   Price    |  Current\n");
   printf("       Oils         | per Bottle |   Stock\n");
   printf("---------------------------------------------\n");
-  printf("1. Clear Minds      %8d            %d\n", *selCM,*clearMinds);
-  printf("2. Energy Booster   %8d            %d\n", *selEB,*energyBooster);
-  printf("3. Calming          %8d            %d\n", *selC,*diffuserCalming);
+  printf("1. Clear Minds          %6d            %d\n", *selCM,*clearMinds);
+  printf("2. Energy Booster       %6d            %d\n", *selEB,*energyBooster);
+  printf("3. Calming              %6d            %d\n", *selC,*diffuserCalming);
   printf("--[Options]----------------------------------\n");
   printf("\nPress 1. Clear Minds.\nPress 2. Energy Booster. \nPress 3. Calming.\nPress 4. Exit Diffusers Market. \n[Enter Choice]: ");
   scanf("%d",&optionB);
@@ -815,10 +759,10 @@ int main()
     int currentLocation = 0;
     int day = 15;
     int currentDay = 1;
-    int clearMinds = 5;
-    int energyBooster = 5; 
-    int diffuserCalming = 5;
-    int productionCharge = 0;
+    int clearMinds = 10;
+    int energyBooster = 10; 
+    int diffuserCalming = 10;
+
     int avblCM = 0; int selCM = 0;
     int avblEB = 0; int selEB = 0;
     int avblC = 0; int  selC = 0;
@@ -839,361 +783,239 @@ int main()
     int ppbRos = 0; // Test price
     int ppbMin = 0; // Test price
 
-    
-
 
     char cityLocations[][20] = {"Manila","Makati","Quezon City","Alabang"};
   
     int charge;
-    int menu; 
+
     printf(" {}  ======================================+ \n");
     printf(" ||        Oil-bularyo ON THE GO           | \n");    
     printf(" )(       CCPROG1 MACHINE PROJECT          | \n");
     printf("|OO|       By: David Avellaneda            | \n");
-    printf("|__| ======================================+ \n");
+    printf("|__| ======================================+ \n\n");
 
-    printf("\n================[Options Menu]==============\n");
-    printf("|  1. Start a new game.                    |\n");    
-    printf("|  2. View Top 10 list.                    |\n");
-    printf("|  3. Change game settings.                |\n");
-    printf("|  4. Exit game.                           |\n");
-    printf("============================================\n\n");
-    printf("Choose Action: ");
-    scanf("%d", &menu);
-    while(menu!= 4){    
-      switch(menu){
-        case 1:
-        system("clear");
-        chargeEssentials(&ppbLem, &ppbLav, &ppbRos, &ppbMin);
+    //bakit kasi hindi while (days<=15) HAHAHAHAHAHA
+    int q=0;
+    chargeEssentials(&ppbLem, &ppbLav, &ppbRos, &ppbMin);
+        
+    showAvailable(&cash, &charge, &clearMinds, &energyBooster, &diffuserCalming, &avblCM, &selCM, &avblEB, &selEB, &avblC, &selC, &avblLem, &selLem, &avblLav, &selLav, &avblRos, &selRos , &avblMin, &selMin, &ppbLem, &ppbLav, &ppbRos, &ppbMin, &lemonDrops, &lavenderDrops, &rosemaryDrops, &mintDrops);
 
-        freebie(&lemonDrops, &lavenderDrops, &rosemaryDrops, &mintDrops, &clearMinds,&energyBooster, &diffuserCalming);
+    while(1){
+      for (q = 0; q <day ; q++){
+        
+        printf("\n===============[Game Stats]=================\n");
+        printf("\tCurrent City: %s\n", cityLocations[currentLocation]);
+        printf("\tCurrent Day : #%d\n", currentDay);    
+        printf("\tCash on-hand: $%d\n", cash);
+        printf("\tCurrent debt: $%d\n", loan);
+        printf("============================================\n\n");
 
-        showAvailable(&cash, &charge, &clearMinds, &energyBooster, &diffuserCalming, &avblCM, &selCM, &avblEB, &selEB, &avblC, &selC, &avblLem, &selLem, &avblLav, &selLav, &avblRos, &selRos , &avblMin, &selMin, &ppbLem, &ppbLav, &ppbRos, &ppbMin, &lemonDrops, &lavenderDrops, &rosemaryDrops, &mintDrops, &currentLocation, &productionCharge);
-        while(1){
-          int q;
-          for (q = 0; q <day ; q++){
-            
-            printf("\n===============[Game Stats]=================\n");
-            printf("\tCurrent City: %s\n", cityLocations[currentLocation]);
-            printf("\tCurrent Day : #%d\n", currentDay);    
-            printf("\tCash on-hand: $%d\n", cash);
-            printf("\tCurrent debt: $%d\n", loan);
-            printf("============================================\n\n");
-
-            int option;
-            printf("============[Choose an Action]==============\n");
-            printf("|  1. Buy        4. Pay Debt /Loan Money   |\n");    
-            printf("|  2. Sell       5. Travel                 |\n");
-            printf("|  3. Make       6. End Game.              |\n");
-            printf("============================================\n\n");
-            printf("Choose Action: ");
-            scanf("%d", &option);
-            
-            if (option == 1 || option == 2){ 
-              
-            
-
-              if(option == 1) //buy 
-              {
-                buyEssentials(&cash, &ppbLem, &ppbLav, &ppbRos, &ppbMin, &lemonDrops, &lavenderDrops, &rosemaryDrops, &mintDrops, &avblLem,&avblLav, &avblRos, &avblMin, &avblCM, &avblEB, &avblC,&selCM, &selEB, &selC);
-                
-              }
-              else if(option ==2){ //sell
-                int choose;
-                
-                printf("===============[Choose Market]==============\n");
-                printf("| 1. Ess. Oil Market   2. Diff. Oil Market |\n"); 
-                printf("============================================\n");
-                printf("Enter choice: ");
-                scanf("%d", &choose);
-                if (choose == 1){
-                  sellEssentials(&cash,&ppbLem, &ppbLav,&ppbRos, &ppbMin,&lemonDrops, &lavenderDrops, &rosemaryDrops, &mintDrops,&avblLem, &avblLav, &avblRos, &avblMin, &avblCM, &avblEB, &avblC, &selCM, &selEB, &selC); 
-                }
-                else if (choose == 2){
-                  sellDiffuser(&cash, &ppbLem, &ppbLav, &ppbRos, &ppbMin, &avblCM, &avblEB, &avblC, &selCM, &selEB, &selC, &clearMinds, &energyBooster, &diffuserCalming);
-                }
-
-                else{
-                  printf("[!]Please choose from the options above.");
-                }
-              }        
-            }
-            
-            else if (option == 3) //make
-            {
-              makeDiffusers(&lemonDrops, &lavenderDrops, &rosemaryDrops, &mintDrops, &cash, &currentLocation, &clearMinds, &energyBooster, &diffuserCalming,&avblCM, &avblEB, &avblC,&productionCharge); 
-            } 
-            
-            else if (option == 4)//pay debt loan
-            {
-              
-              printf("\t          _.-*(               _.- \n");
-              printf("\t    .-*'``     ``*---..-i__.-`:'  \n");
-              printf("\t .'o   ((   ,         _ .---..(   \n");
-              printf("\t `-^^._'._(__...--*^^     ``     \n");
-
-              int choice;
-              int payment;
-              int newLoan;
+        int option;
+        printf("============[Choose an Action]==============\n");
+        printf("|  1. Buy        4. Pay Debt /Loan Money   |\n");    
+        printf("|  2. Sell       5. Travel                 |\n");
+        printf("|  3. Make       6. End Game.              |\n");
+        printf("============================================\n\n");
+        printf("Choose Action: ");
+        scanf("%d", &option);
+        
+        if (option == 1 || option == 2){ 
           
-              printf("\n           [ Local Loan Shark ]\n\n");
-              printf("Current Money = $%d\n", cash);
-              printf("---------------------------------------------\n");
-              printf("     Outstanding        |    Interest rate   \n");
-              printf("        debt            |       per day      \n");
-              printf("---------------------------------------------\n");
-              printf("  $%10d                  %d-percent\n", loan, interest);
-              printf("--[Options]----------------------------------\n");
-              printf("\nPress 1. Pay Outstanding Debt. \nPress 2. Loan Money.\nPress 3. Exit LoanShark. \n[Enter Choice]: ");
-              scanf("%d",&choice);
-              while (choice != 3) {
-              switch(choice){
-                case 1:
-                  printf("[You chose to pay your Debt.]\n");
-                  printf("Please enter the debt you are going to pay: ");
-                  scanf("%d", &payment);
-                  if (payment <= cash && payment <= loan ){
-                    cash -= payment;
-                    loan -= payment;
-                    printf("\n---------------------------------------------");
-                    printf("\n\t\t\t[Payment Receipt]");
-                    printf("\n---------------------------------------------");
-                    printf("\n[#]You paid: %d", payment);
-                    printf("\n[*]Your current debt: %d", loan);
-                    printf("\n[$]Money left: %d", cash);
-                    printf("\n---------------------------------------------");
-                  }
-                  else{
-                    printf("\n[!]Payment Unsuccesful.\n");
-                  }
-                break;
+         
 
-              case 2:
-                printf("$[You chose to make another loan.]$\n");
-                printf("Please enter the money you are going to loan: ");
-                scanf("%d", &newLoan);
-                if (newLoan > 0){
-                  cash += newLoan;
-                  loan += newLoan;
-                  printf("\t\t\t[Loan Receipt]\n");
-                  printf("\n---------------------------------------------");
-                  printf("\n[#]You loaned: %d", newLoan);
-                  printf("\n[*]Your current debt: %d", loan);
-                  printf("\n[$]Current Money : %d", cash);
-                  printf("\n---------------------------------------------");
-                }
-                else{
-                  printf("\n[!]Loan Unsuccesful.\n");
-                }
-              
-              break;
-
-              default:
-                printf("\n[!]Please choose from the options above.\n");
-              }
-                printf("\nPress 1. Pay Outstanding Debt. \nPress 2. Loan Money.\nPress 3. Exit LoanShark. \n[Enter Choice]: ");
-                scanf("%d",&choice);
-              }
-            }
-              
-
-            else if (option == 5)//travel
-            {
-              int select;
-              int basis = currentLocation;
-              printf("\t     ____     \n");
-              printf("\t   _/____]__  \n");
-              printf("\t |_v'_]*=-=*] \n");     
-              printf("\t  `UJ-uJ--uJ  \n");
-              printf("=============[Choose a City]================\n");
-              printf("|    1. Manila       3. Quezon City        |\n");    
-              printf("|    2. Makati       4. Alabang            |\n");
-              printf("============================================\n");
-              printf("Current Location: %s\n", cityLocations[currentLocation]);
-              printf("\nEnter choice: ");
-              scanf("%d", &select);
-              if(select != basis +1 && select <= 4){
-                if (select == 1){ //manila
-                  currentLocation = 0;
-                  currentDay +=1 ; 
-                  printf("New Location: %s\n", cityLocations[currentLocation]);
-                  if(loan > 0){ //BAT AYAW
-                    loan += (interest*loan)/100;
-                  }
-                  else{}
-                }
-
-                else if (select == 2){ //makati 
-                  currentLocation = 1; 
-                  currentDay +=1; 
-                  printf("New Location: %s\n", cityLocations[currentLocation]);
-                  if(loan > 0){ 
-                
-                    loan += (interest*loan)/100;
-                  } 
-                  else{}
-                }
-                else if (select == 3){ //Quezon City
-                  currentLocation = 2;
-                  currentDay +=1;
-                  printf("New Location: %s\n", cityLocations[currentLocation]);
-                  if(loan > 0){
-                    loan += (interest*loan)/100;
-                  }
-                  else{} 
-                }
-                else if (select == 4){ //Alabang
-                  currentLocation = 3;
-                  currentDay +=1;
-                  printf("New Location: %s\n", cityLocations[currentLocation]);
-                  if(loan > 0){
-                    loan += (interest*loan)/100;
-                  }
-                  else{} 
-                }
-                  system("clear");
-                  freebie(&lemonDrops, &lavenderDrops, &rosemaryDrops, &mintDrops, &clearMinds,&energyBooster, &diffuserCalming);
-
-                  chargeEssentials(&ppbLem, &ppbLav, &ppbRos, &ppbMin);
+          if(option == 1) //buy 
+          {
+            buyEssentials(&cash, &ppbLem, &ppbLav, &ppbRos, &ppbMin, &lemonDrops, &lavenderDrops, &rosemaryDrops, &mintDrops, &avblLem,&avblLav, &avblRos, &avblMin, &avblCM, &avblEB, &avblC,&selCM, &selEB, &selC);
             
-                  showAvailable(&cash, &charge, &clearMinds, &energyBooster, &diffuserCalming, &avblCM, &selCM, &avblEB, &selEB, &avblC, &selC, &avblLem, &selLem, &avblLav, &selLav, &avblRos, &selRos , &avblMin, &selMin, &ppbLem, &ppbLav, &ppbRos, &ppbMin, &lemonDrops, &lavenderDrops, &rosemaryDrops, &mintDrops, &currentLocation, &productionCharge);
-                
+          }
+          else if(option ==2){ //sell
+            int choose;
+            
+            printf("===============[Choose Market]==============\n");
+            printf("| 1. Ess. Oil Market   2. Diff. Oil Market |\n"); 
+            printf("============================================\n");
+            printf("Enter choice: ");
+            scanf("%d", &choose);
+            if (choose == 1){
+              sellEssentials(&cash,&ppbLem, &ppbLav,&ppbRos, &ppbMin,&lemonDrops, &lavenderDrops, &rosemaryDrops, &mintDrops,&avblLem, &avblLav, &avblRos, &avblMin, &avblCM, &avblEB, &avblC, &selCM, &selEB, &selC); 
+            }
+            else if (choose == 2){
+              sellDiffuser(&cash, &ppbLem, &ppbLav, &ppbRos, &ppbMin, &avblCM, &avblEB, &avblC, &selCM, &selEB, &selC, &clearMinds, &energyBooster, &diffuserCalming);
+            }
+
+            else{
+              printf("[!]Please choose from the options above.");
+            }
+          }        
+        }
+        
+        else if (option == 3) //make
+        {
+          makeDiffusers(&lemonDrops, &lavenderDrops, &rosemaryDrops, &mintDrops, &cash, &currentLocation, &clearMinds, &energyBooster, &diffuserCalming,&avblCM, &avblEB, &avblC); 
+        } 
+         
+        else if (option == 4)//pay debt loan
+        {
+          
+          printf("\t          _.-*(               _.- \n");
+          printf("\t    .-*'``     ``*---..-i__.-`:'  \n");
+          printf("\t .'o   ((   ,         _ .---..(   \n");
+          printf("\t `-^^._'._(__...--*^^     ``     \n");
+
+          int choice;
+          int payment;
+          int newLoan;
+      
+          printf("\n           [ Local Loan Shark ]\n\n");
+          printf("Current Money = $%d\n", cash);
+          printf("---------------------------------------------\n");
+          printf("     Outstanding        |    Interest rate   \n");
+          printf("        debt            |       per day      \n");
+          printf("---------------------------------------------\n");
+          printf("  $%10d                  %d-percent\n", loan, interest);
+          printf("--[Options]----------------------------------\n");
+          printf("\nPress 1. Pay Outstanding Debt. \nPress 2. Loan Money.\nPress 3. Exit LoanShark. \n[Enter Choice]: ");
+          scanf("%d",&choice);
+          while (choice != 3) {
+          switch(choice){
+            case 1:
+              printf("[You chose to pay your Debt.]\n");
+              printf("Please enter the debt you are going to pay: ");
+              scanf("%d", &payment);
+              if (payment <= cash && payment <= loan ){
+                cash -= payment;
+                loan -= payment;
+                printf("\t\t\t[Payment Receipt]\n");
+                printf("---------------------------------------------");
+                printf("\n[#]You paid: %d", payment);
+                printf("\n[*]Your current debt: %d", loan);
+                printf("\n[$]Money left: %d", cash);
+                printf("\n---------------------------------------------");
               }
               else{
-                printf("\n[!]Please choose from the options above.");
-                printf("\n[!]Choice not Available.");
-              
+                printf("\n[!]Payment Unsuccesful.\n");
               }
-
-            } 
-
-            else if (option == 6)//Exit
-            {
-              
-              printf("=============[Game Summary]=================\n");
-              printf("\tCurrent City: %s\n", cityLocations[currentLocation]);
-              printf("\tCurrent Day : #%d\n", currentDay);    
-              printf("\tCash on-hand: $%d\n", cash);
-              printf("\tCurrent debt: $%d\n", loan);
-              printf("============================================\n\n");
-              printf("Enter your nickname: ");
-              char nickname[20];
-              scanf("%s",nickname);
-              int standing = cash - loan;
-              //write nickname + standing to file
-              return 0;
-            }
-          }
-          
-      break;
-
-      case 2:
-        printf("\nShows List");
-      break;
-
-      case 3:
-        printf("\n===============[Settings Menu]==============\n");
-        printf("|  1. Change the number of days [per game] |\n");    
-        printf("|  2. Change starting money.               |\n");
-        printf("|  3. Change starting loan.                |\n");
-        printf("|  4. Change loan interest rate.           |\n");
-        printf("|  5. Exit settings.                       |\n");
-        printf("============================================\n\n");
-        printf("Choose Action: ");
-        int settingsMenu; 
-        scanf("%d", &settingsMenu);
-        while(settingsMenu != 5){
-        switch(settingsMenu){
-          int s;
-          case 1:
-            printf("\n\t[Change Game Days]");
-            printf("\nPlease enter the new number of days: ");
-            scanf("%d", &s);
-            if (s != day){
-              day = s;
-              printf("\n[@]New number of days: %d", day);
-            }
-            else{
-              printf("\n[!]Error. Please try again :("); 
-            }
-          break;
+            break;
 
           case 2:
-            printf("\n\t[Change Starting Money]");
-            printf("\nPlease enter the new starting money: ");
-            scanf("%d", &s);
-            if (s != cash){
-              cash = s;
-              printf("\n[$]New starting cash: %d", cash);
+            printf("$[You chose to make another loan.]$\n");
+            printf("Please enter the money you are going to loan: ");
+            scanf("%d", &newLoan);
+            if (newLoan > 0){
+              cash += newLoan;
+              loan += newLoan;
+              printf("\t\t\t[Loan Receipt]\n");
+              printf("\n---------------------------------------------");
+              printf("\n[#]You loaned: %d", newLoan);
+              printf("\n[*]Your current debt: %d", loan);
+              printf("\n[$]Current Money : %d", cash);
+              printf("\n---------------------------------------------");
             }
             else{
-              printf("\n[!]Error. Please try again :("); 
+              printf("\n[!]Loan Unsuccesful.\n");
             }
+          
           break;
-
-          case 3:
-            printf("\n\t[Change Starting Loan]");
-            printf("\nPlease enter the new starting loan: ");
-            scanf("%d", &s);
-            if (s != loan){
-              loan = s;
-              printf("\n[#]New starting loan: %d", loan);
-            }
-            else{
-              printf("\n[!]Error. Please try again :("); 
-            }
-          break;
-
-          case 4:
-            printf("\n\t[Change Interest Rate]");
-            printf("\nPlease enter the new interest rate: ");
-            scanf("%d", &s);
-            if (s != interest){
-              interest = s;
-              printf("\nN[*]ew interest rate: %d", day);
-            }
-            else{
-              printf("\n[!]Error. Please try again :("); 
-            }
-        
 
           default:
-            printf("[!]Please choose from the options above.");
-
+            printf("\n[!]Please choose from the options above.\n");
           }
-           printf("\n===============[Settings Menu]==============\n");
-          printf("|  1. Change the number of days [per game] |\n");    
-          printf("|  2. Change starting money.               |\n");
-          printf("|  3. Change starting loan.                |\n");
-          printf("|  4. Change loan interest rate.           |\n");
-          printf("|  5. Exit settings.                       |\n");
-          printf("============================================\n\n");
-          printf("Choose Action: ");
-          scanf("%d", &settingsMenu);
+            printf("\nPress 1. Pay Outstanding Debt. \nPress 2. Loan Money.\nPress 3. Exit LoanShark. \n[Enter Choice]: ");
+            scanf("%d",&choice);
+          }
         }
-        break;
+          
 
-      default:
-        printf("\n[!]Please choose from the options above.\n");
-      }
-        printf("\n================[Options Menu]==============\n");
-        printf("|  1. Start a new game.                    |\n");    
-        printf("|  2. View Top 10 list.                    |\n");
-        printf("|  3. Change game settings.                |\n");
-        printf("|  4. Exit game.                           |\n");
-        printf("============================================\n\n");
-        printf("Choose Action: ");
-        scanf("%d", &menu);
+        else if (option == 5)//travel
+        {
+          int select;
+          int basis = currentLocation;
+          printf("\t     ____     \n");
+          printf("\t   _/____]__  \n");
+          printf("\t |_v'_]*=-=*] \n");     
+          printf("\t  `UJ-uJ--uJ  \n");
+          printf("=============[Choose a City]================\n");
+          printf("|    1. Manila       3. Quezon City        |\n");    
+          printf("|    2. Makati       4. Alabang            |\n");
+          printf("============================================\n");
+          printf("Current Location: %s\n", cityLocations[currentLocation]);
+          printf("\nEnter choice: ");
+          scanf("%d", &select);
+          if(select != basis +1 && select <= 4){
+            if (select == 1){ //manila
+              currentLocation = 0;
+              currentDay +=1 ; 
+              printf("New Location: %s\n", cityLocations[currentLocation]);
+              if(loan > 0){ //BAT AYAW
+                loan += (interest*loan)/100;
+              }
+              else{}
+            }
+
+            else if (select == 2){ //makati 
+              currentLocation = 1; 
+              currentDay +=1; 
+              printf("New Location: %s\n", cityLocations[currentLocation]);
+              if(loan > 0){ 
+            
+                loan += (interest*loan)/100;
+              } 
+              else{}
+            }
+            else if (select == 3){ //Quezon City
+              currentLocation = 2;
+              currentDay +=1;
+              printf("New Location: %s\n", cityLocations[currentLocation]);
+              if(loan > 0){
+                loan += (interest*loan)/100;
+              }
+              else{} 
+            }
+            else if (select == 4){ //Alabang
+              currentLocation = 3;
+              currentDay +=1;
+              printf("New Location: %s\n", cityLocations[currentLocation]);
+              if(loan > 0){
+                loan += (interest*loan)/100;
+              }
+              else{} 
+            }
+              chargeEssentials(&ppbLem, &ppbLav, &ppbRos, &ppbMin);
+        
+              showAvailable(&cash, &charge, &clearMinds, &energyBooster, &diffuserCalming, &avblCM, &selCM, &avblEB, &selEB, &avblC, &selC, &avblLem, &selLem, &avblLav, &selLav, &avblRos, &selRos , &avblMin, &selMin, &ppbLem, &ppbLav, &ppbRos, &ppbMin, &lemonDrops, &lavenderDrops, &rosemaryDrops, &mintDrops);
+            
+          }
+          else{
+            printf("\n[!]Please choose from the options above.");
+            printf("\n[!]Choice not Available.");
+          
+          }
+
+        } 
+
+        else if (option == 6)//Exit
+        {
+          printf("=============[Game Summary]=================\n");
+          printf("\tCurrent City: %s\n", cityLocations[currentLocation]);
+          printf("\tCurrent Day : #%d\n", currentDay);    
+          printf("\tCash on-hand: $%d\n", cash);
+          printf("\tCurrent debt: $%d\n", loan);
+          printf("============================================\n\n");
+        
+          abort();
+          //keyword lng naman sinabi di naman sinabing same function
+          //pde na yan abort same lng ng exit()
+        } 
+        
       }
 
-  }
-      printf("\n-End-");
-      return 0;
-}
+    }
+    printf("\n \t\t[Exiting Game]");
     
-  
- 
+
+    return 0; 
+} 
 
 
 
-
+*/

@@ -2,7 +2,7 @@
 #include <stdio.h> 
 #include <stdlib.h> 
 #include <time.h> 
-
+#include <string.h>
 
  
 void chargeDiffusers(int essentialOil) 
@@ -96,9 +96,9 @@ int main()
     int essentialOil =3 ; //Lemon
     srand(time(0)); 
 
-
-    chargeDiffusers(essentialOil); 
   
+    chargeDiffusers(essentialOil); 
+
     return 0; 
 } 
 

@@ -4,7 +4,7 @@
 #include <stdlib.h> 
 #include <time.h> 
 #include <string.h>
-void chargeEssentials() 
+void chargeEssentials(int*ppbLem, int*ppbLav, int*ppbRos, int*ppbMin) 
 {
   
   //  In generating the random value, the function generates a 
@@ -12,7 +12,6 @@ void chargeEssentials()
   //  down using modulo (arithmetic function) from the indicated minimum 
   //  and maximum charge range. Resulting value will be completely random 
   //  every single run.  
-  
   
    int oilCharges[4];
    int n;
@@ -84,15 +83,29 @@ void chargeEssentials()
   printf("\n");
   }
   printf("---------------------------------------------\n");
-    
+  
+  *ppbLem = chargeValues[0];
+  *ppbLav = chargeValues[1];
+  *ppbRos = chargeValues[2];
+  *ppbMin = chargeValues[3];
 } 
   
-
 int main() 
 { 
-    srand(time(0)); 
-    chargeEssentials(); 
-  
+    srand(time(0));
+
+    int ppbLem = 0;
+    int ppbLav = 0;
+    int ppbRos = 0;
+    int ppbMin = 0;
+
+    chargeEssentials(&ppbLem, &ppbLav, &ppbRos, &ppbMin); 
+
+    printf("\n Price: %d", ppbLem);
+    printf("\n Price: %d", ppbLav);
+    printf("\n Price: %d", ppbRos);
+    printf("\n Price: %d", ppbMin);
+    
     return 0; 
 } 
 
