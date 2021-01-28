@@ -5,9 +5,15 @@
 #include <string.h>
 
 
-//price ng oils
-void freebie(int*lemonDrops, int*lavenderDrops, int*rosemaryDrops, int*mintDrops, int*clearMinds, int *energyBooster, int*diffuserCalming){
 
+void freebie(int*lemonDrops, int*lavenderDrops, int*rosemaryDrops, int*mintDrops, int*clearMinds, int *energyBooster, int*diffuserCalming){
+/*
+  Description: Generates freebies everyday.
+  Parameters: 
+    Adds bottle of essential or diffuser oil if the generated rand() value
+    falls within the specified range.
+  Return Value: void function (no return value)
+*/
   int freebieChance = (rand() % (100 - 1 + 1)) + 1; 
       
       if (freebieChance >= 1 && freebieChance <= 30){ 
@@ -61,7 +67,16 @@ void freebie(int*lemonDrops, int*lavenderDrops, int*rosemaryDrops, int*mintDrops
 
 int chargeEssentials(int*ppbLem, int*ppbLav, int*ppbRos, int*ppbMin) 
 {
-  
+  /*
+    Description: Generates price for essential oil everyday.
+    Parameters:   
+      Generates essential oil using rand() [within its specified price range]
+      then applies the four operators(+,-,*,retain) ont the value.
+
+      Sends/updates generated values back to main.
+    Return Value: void function (no return value)
+  */
+
   //  In generating the random value, the function generates a 
   //  random value from 0 - 32767; the generated value then trimmed 
   //  down using modulo (arithmetic function) from the indicated minimum 
@@ -138,6 +153,14 @@ int chargeEssentials(int*ppbLem, int*ppbLav, int*ppbRos, int*ppbMin)
 
 void buyEssentials(int*cash, int*ppbLem, int*ppbLav, int*ppbRos, int*ppbMin, int*lemonDrops, int*lavenderDrops, int*rosemaryDrops, int*mintDrops,int*avblLem, int*avblLav, int*avblRos, int*avblMin, int*avblCM, int*avblEB, int*avblC, int*selCM, int*selEB, int*selC) 
 {
+/*
+  Description: Generates market for essential oil everyday.
+  Parameters:   
+    -needs cash, current oil prices and oil inventory. 
+    Enables user to buy oils based on the generated values of chargeEssentials()
+  Return Value: void function (no return value)
+*/
+
   char essentialOils[][20] = {"Lemon","Lavender","Rosemary", "Mint"};
   
   int chargeValues[4];
@@ -331,6 +354,14 @@ printf("||_||||||||||_|||||||||||||_||||||||||_||\n");
 
 void sellEssentials(int*cash, int*ppbLem, int*ppbLav, int*ppbRos, int*ppbMin, int*lemonDrops, int*lavenderDrops, int*rosemaryDrops, int*mintDrops,int*avblLem, int*avblLav, int*avblRos, int*avblMin, int*avblCM, int*avblEB, int*avblC, int*selCM, int*selEB, int*selC) 
 {
+/*
+  Description: Generates market for essential oil everyday.
+  Parameters:   
+    -needs cash, current oil prices and oil inventory. 
+    Enables user to sell oils based on the generated values of chargeEssentials()
+  Return Value: void function (no return value)
+*/
+
   char essentialOils[][20] = {"Lemon","Lavender","Rosemary", "Mint"};
   
   int chargeValues[4];
@@ -517,7 +548,16 @@ printf("||_||||||||||_|||||||||||||_||||||||||_||\n");
 
 //INVENTORY
 int showAvailable(int*cash, int*charge, int*clearMinds, int*energyBooster, int*diffuserCalming, int*avblCM, int*selCM, int*avblEB, int*selEB, int*avblC, int*selC, int*avblLem, int*selLem, int*avblLav, int*selLav, int*avblRos, int*selRos , int*avblMin, int*selMin, int*ppbLem, int*ppbLav, int*ppbRos, int*ppbMin, int*lemonDrops, int*lavenderDrops, int*rosemaryDrops, int*mintDrops, int*currentLocation, int*productionCharge){
+/*
+  Description: Automatic buy, sell, and make test based on current
+             inventory and cash.   
+  Parameters:
+    -needs cash, current oil prices and oil inventory. 
+    Automatically tests how many essential bottles the user can 
+    acquire/sell based on current cash and oil bottles/drops   
 
+  Return Value: void function (no return value)
+*/
   int testCash = *cash;
   char essentialOils[][20] = {"Lemon","Lavender","Rosemary", "Mint"};
 
@@ -592,7 +632,14 @@ int showAvailable(int*cash, int*charge, int*clearMinds, int*energyBooster, int*d
 
 //make
 void makeDiffusers(int *lemonDrops, int *lavenderDrops, int *rosemaryDrops, int *mintDrops, int *cash, int *currentLocation, int *clearMinds, int *energyBooster, int *diffuserCalming, int*avblCM, int*avblEB, int*avblC, int*productionCharge){
-
+/*
+  Description: Generates factory for diffuser oil making.
+  Parameters:   
+    -needs cash, current oil prices and oil inventory. 
+    Enables user to craft diffuser oils based on the generated values 
+    of chargeEssentials()
+  Return Value: void function (no return value)
+*/
   int lemDrop = *lemonDrops; 
   int lavDrop = *lavenderDrops; 
   int rosDrop = *rosemaryDrops;
@@ -758,7 +805,14 @@ void makeDiffusers(int *lemonDrops, int *lavenderDrops, int *rosemaryDrops, int 
 }
 
 void sellDiffuser (int*cash, int*ppbLem, int*ppbLav, int*ppbRos, int*ppbMin, int*avblCM, int*avblEB, int*avblC, int*selCM, int*selEB, int*selC, int*clearMinds, int*energyBooster, int*diffuserCalming){
-  
+/*
+  Description: Generates market for diffuser oil.
+  Parameters:   
+    -needs cash, current oil prices and oil inventory. 
+    Enables user to sell diffuser oils based on the generated values 
+    of chargeEssentials(), oils found on inventory, and cap price.
+  Return Value: void function (no return value)
+*/  
   int oilDFCharges[3];
   int d;
 
@@ -1284,12 +1338,6 @@ int main()
 }
     
   
- 
-
-
-
-
-
  
 
 
