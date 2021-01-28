@@ -4,7 +4,6 @@
 #include <time.h> 
 #include <string.h>
 
-//ascci arts from http://www.ascii-art.de/
 
 //price ng oils
 void freebie(int*lemonDrops, int*lavenderDrops, int*rosemaryDrops, int*mintDrops, int*clearMinds, int *energyBooster, int*diffuserCalming){
@@ -12,43 +11,43 @@ void freebie(int*lemonDrops, int*lavenderDrops, int*rosemaryDrops, int*mintDrops
   int freebieChance = (rand() % (100 - 1 + 1)) + 1; 
       
       if (freebieChance >= 1 && freebieChance <= 30){ 
-        printf("\n\t[*] You won a free Diffuser Oil :) \n");
+        printf("\n[*] You won a free Diffuser Oil :) \n");
           int diffusersChance = (rand() % (3 - 1 + 1)) + 1;
           //printf("Val: %d",diffusersChance);
             if (diffusersChance == 1){
               *clearMinds += 1;
-              printf("\n\t[+] Free Clear Minds Bottle.");
+              printf("\n[+] Free Clear Minds Bottle.");
              }
             else if (diffusersChance == 2){
               *energyBooster += 1;
-              printf("\n\t[+] Free Energy Booster Bottle.");
+              printf("\n[+] Free Energy Booster Bottle.");
              }
             else if (diffusersChance == 3){
               *diffuserCalming += 1;
-              printf("\n\t[+] Free Calming Bottle.");
+              printf("\n[+] Free Calming Bottle.");
              }
             else{}
       }
 
       else if (freebieChance >= 31 && freebieChance <= 71){ 
-        printf("\n\t[*] You won a free Essential Oil :) \n");
+        printf("\n[*] You won a free Essential Oil :) \n");
         int essentialsChance = (rand() % (4 - 1 + 1)) + 1;
         //printf("Val: %d",essentialsChance);
           if (essentialsChance == 1){
             *lemonDrops += 10;
-            printf("\n\t[+] Free Lemon Oil Bottle.");
+            printf("\n[+] Free Lemon Oil Bottle.");
            }
           else if (essentialsChance == 2){
             *lavenderDrops += 10;
-            printf("\n\t[+] Free Lavender Oil Bottle.");
+            printf("\n[+] Free Lavender Oil Bottle.");
            }
           else if (essentialsChance == 3){
             *rosemaryDrops += 10;
-             printf("\n\t[+] Free Rosemary Oil Bottle.");
+             printf("\n[+] Free Rosemary Oil Bottle.");
            }
           else if (essentialsChance == 4){
             *mintDrops += 10;
-             printf("\n\t[+] Free Mint Oil Bottle.");
+             printf("\n[+] Free Mint Oil Bottle.");
            }
           else{}
       }
@@ -85,7 +84,8 @@ int chargeEssentials(int*ppbLem, int*ppbLav, int*ppbRos, int*ppbMin)
    int chargeValues[4];
 
     char essentialOils[][20] = {"Lemon","Lavender","Rosemary", "Mint"};
-    for(int i = 0; i < 4; ++i) {
+    int i;
+    for(i = 0; i < 4; ++i) {
       
       charge = oilCharges[i];
       int chanceNum = (rand() % (100 - 1 + 1)) + 1; 
@@ -101,8 +101,8 @@ int chargeEssentials(int*ppbLem, int*ppbLav, int*ppbRos, int*ppbMin)
         charge -= factorNum;
 
         if (charge <= 0){ //nested statement; checks wether the generated value is a negative number. If yes, it returns the orginal value.
-          //chargeValues[i] = retCharge; //reverts value to original price if genval == 0 
-          chargeValues[i] = 0; 
+          chargeValues[i] = retCharge; //reverts value to original price if genval == 0 
+          //chargeValues[i] = 0; 
         }
         else{
           chargeValues[i] = charge;
@@ -168,6 +168,7 @@ printf("||_||||||||||_|||||||||||||_||||||||||_||\n");
   printf("     Essential       |   Price    |   Price  \n");
   printf("       Oils          | per Bottle | per drops\n");
   printf("---------------------------------------------\n");
+  
   if(*ppbLem > 0){
     printf("1. Lemon              $%6d       $%5d\n", *ppbLem, *ppbLem/10);
   } else{
@@ -226,8 +227,8 @@ printf("||_||||||||||_|||||||||||||_||||||||||_||\n");
       switch(option){
         
           case 1:
-          printf("\n[You chose to buy Lemon Oil]");
-          
+          if(*ppbLem > 0){
+            printf("\n[You chose to buy Lemon Oil]");
             printf("\n\t[Buying Lemon Oil...]");
                printf("\nPlease enter the number of bottles: ");
                scanf("%d", &e);
@@ -244,12 +245,13 @@ printf("||_||||||||||_|||||||||||||_||||||||||_||\n");
                     printf("\n[!]You do not have enough money to buy the oil.\n");
                     }
                 }
+          }
           break;
 
         //////////////////////////////////////////////////////////////
         case 2:
-          printf("\n[You chose to buy Lavender Oil]");
-          
+          if(*ppbLav > 0){
+            printf("\n[You chose to buy Lavender Oil]");
             printf("\n\t[Buying Lavender Oil...]");
             printf("\nPlease enter the number of bottles: ");
             scanf("%d", &e);
@@ -266,12 +268,13 @@ printf("||_||||||||||_|||||||||||||_||||||||||_||\n");
                     printf("\n[!]You do not have enough money to buy the oil.\n");
                     }
                 }
+          }
           break;
 
         //////////////////////////////////////////////////////////////
         case 3:
+          if(*ppbRos > 0){
           printf("\n[You chose to buy Rosemary Oil]");
-          
             printf("\n\t[Buying Rosemary Oil...]");
             printf("\nPlease enter the number of bottles: ");
             scanf("%d", &e);
@@ -288,12 +291,13 @@ printf("||_||||||||||_|||||||||||||_||||||||||_||\n");
                     printf("\n[!]You do not have enough money to buy the oil.\n");
                     }
                 }
+          }
           break;
 
         //////////////////////////////////////////////////////////////
         case 4:
+          if(*ppbMin > 0){
           printf("\n[You chose to buy Mint Oil]");
-          
             printf("\n\t[Buying Mint Oil...]");
             printf("\nPlease enter the number of bottles: ");
             scanf("%d", &e);
@@ -310,7 +314,7 @@ printf("||_||||||||||_|||||||||||||_||||||||||_||\n");
                     printf("\n[!]You do not have enough money to buy the oil.\n");
                     }
                 }
-            
+          }
           break;
 
           //////////////////////////////////////////////////////////////
@@ -410,6 +414,7 @@ printf("||_||||||||||_|||||||||||||_||||||||||_||\n");
       switch(option){
         
           case 1:
+            if(*ppbLem > 0){
               printf("\n\t[Selling Lemon Oil]");
               printf("\nPlease enter the number drops to be sold: ");
               scanf("%d", &f);
@@ -425,11 +430,13 @@ printf("||_||||||||||_|||||||||||||_||||||||||_||\n");
                     else{
                       printf("\n[!]You do not have enough oil to sell.\n");
                       }
-                  }  
+                  }
+              }  
             break;
 
         //////////////////////////////////////////////////////////////
         case 2:
+          if(*ppbLav > 0){
             printf("\n\t[Selling Lavender Oil]");
             printf("\nPlease enter the number drops to be sold: ");
             scanf("%d", &f);
@@ -446,11 +453,12 @@ printf("||_||||||||||_|||||||||||||_||||||||||_||\n");
                     printf("\n[!]You do not have enough oil to sell.\n");
                     }
                 }
-
+          }
           break;
 
         //////////////////////////////////////////////////////////////
         case 3:
+          if(*ppbRos > 0){  
             printf("\n\t[Selling Rosemary Oil]");
             printf("\nPlease enter the number drops to be sold: ");
             scanf("%d", &f);
@@ -467,13 +475,15 @@ printf("||_||||||||||_|||||||||||||_||||||||||_||\n");
                     printf("\n[!]You do not have enough oil to sell.\n");
                     }
                 }
+          }
           break;
 
         //////////////////////////////////////////////////////////////
         case 4:
-          printf("\n\t[Selling Mint Oil]");
-          printf("\nPlease enter the number drops to be sold: ");
-          scanf("%d", &f);
+          if(*ppbLem > 0){
+            printf("\n\t[Selling Mint Oil]");
+            printf("\nPlease enter the number drops to be sold: ");
+            scanf("%d", &f);
 
             for (c = 0; c <f ; c++){
                   if (*mintDrops >= 1){
@@ -487,6 +497,7 @@ printf("||_||||||||||_|||||||||||||_||||||||||_||\n");
                     printf("\n[!]You do not have enough oil to sell.\n");
                     }
                 }
+          }
           break;
 
           //////////////////////////////////////////////////////////////
@@ -527,7 +538,8 @@ int showAvailable(int*cash, int*charge, int*clearMinds, int*energyBooster, int*d
   //Checks how many bottles of essential oil he can buy
 
   printf("\n[Testing Max numbers for Essential Oils]\n");
-    for(int i = 0; i < 4; ++i) {
+    int i;
+    for(i = 0; i < 4; ++i) {
       int testA = testCash;
       int testPriceA = pricePerBottles[i];
       int resA;
@@ -595,8 +607,9 @@ void makeDiffusers(int *lemonDrops, int *lavenderDrops, int *rosemaryDrops, int 
 
   printf("\n[Testing Max numbers for Diffuser Oils]\n");
   char diffuserOils[][20] = {"ClearMinds","EnergyBooster","Calming"};
-  int e= 0; 
-  for(int i = 0; i < 3; ++i) {
+  int e= 0;
+  int i; 
+  for(i = 0; i < 3; ++i) {
      
       
       if (e == 0){ // clearMinds
@@ -748,10 +761,12 @@ void sellDiffuser (int*cash, int*ppbLem, int*ppbLav, int*ppbRos, int*ppbMin, int
   
   int oilDFCharges[3];
   int d;
-  int dropLemon = *ppbLem/10;
-  int dropLav = *ppbLav/10;
-  int dropRos = *ppbRos/10;
-  int dropMin = *ppbMin/10;
+
+    int dropLemon = *ppbLem/10;
+    int dropLav = *ppbLav/10;
+    int dropRos = *ppbRos/10; 
+    int dropMin = *ppbMin/10;
+  
   int option;
 
   int selPriceCM = 1.15* ((3*dropLemon)+(2*dropLav)+(2*dropMin));
@@ -1114,7 +1129,7 @@ int main()
                   }
                   else{} 
                 }
-                  //system("clear");
+                  system("clear");
                   freebie(&lemonDrops, &lavenderDrops, &rosemaryDrops, &mintDrops, &clearMinds,&energyBooster, &diffuserCalming);
                   
                   chargeEssentials(&ppbLem, &ppbLav, &ppbRos, &ppbMin);
@@ -1274,100 +1289,7 @@ int main()
 
 
 
-\n");
-        printf("Choose Action: ");
-        int settingsMenu; 
-        scanf("%d", &settingsMenu);
-        while(settingsMenu != 5){
-        switch(settingsMenu){
-          int s;
-          case 1:
-            printf("\n\t[Change Game Days]");
-            printf("\nPlease enter the new number of days: ");
-            scanf("%d", &s);
-            if (s != day){
-              day = s;
-              printf("\n[@]New number of days: %d", day);
-            }
-            else{
-              printf("\n[!]Error. Please try again :("); 
-            }
-          break;
 
-          case 2:
-            printf("\n\t[Change Starting Money]");
-            printf("\nPlease enter the new starting money: ");
-            scanf("%d", &s);
-            if (s != cash){
-              cash = s;
-              printf("\n[$]New starting cash: %d", cash);
-            }
-            else{
-              printf("\n[!]Error. Please try again :("); 
-            }
-          break;
-
-          case 3:
-            printf("\n\t[Change Starting Loan]");
-            printf("\nPlease enter the new starting loan: ");
-            scanf("%d", &s);
-            if (s != loan){
-              loan = s;
-              printf("\n[#]New starting loan: %d", loan);
-            }
-            else{
-              printf("\n[!]Error. Please try again :("); 
-            }
-          break;
-
-          case 4:
-            printf("\n\t[Change Interest Rate]");
-            printf("\nPlease enter the new interest rate: ");
-            scanf("%d", &s);
-            if (s != interest){
-              interest = s;
-              printf("\nN[*]ew interest rate: %d", day);
-            }
-            else{
-              printf("\n[!]Error. Please try again :("); 
-            }
-        
-
-          default:
-            printf("[!]Please choose from the options above.");
-
-          }
-           printf("\n===============[Settings Menu]==============\n");
-          printf("|  1. Change the number of days [per game] |\n");    
-          printf("|  2. Change starting money.               |\n");
-          printf("|  3. Change starting loan.                |\n");
-          printf("|  4. Change loan interest rate.           |\n");
-          printf("|  5. Exit settings.                       |\n");
-          printf("============================================\n\n");
-          printf("Choose Action: ");
-          scanf("%d", &settingsMenu);
-        }
-        break;
-
-      default:
-        printf("\n[!]Please choose from the options above.\n");
-      }
-        printf("\n================[Options Menu]==============\n");
-        printf("|  1. Start a new game.                    |\n");    
-        //printf("|  2. View Top 10 list.                    |\n");
-        printf("|  2. Change game settings.                |\n");
-        printf("|  3. Exit game.                           |\n");
-        printf("============================================\n\n");
-        printf("Choose Action: ");
-        scanf("%d", &menu);
-      }
-
-  }
-      printf("\n-End-");
-      return 0;
-}
-    
-  
  
 
 
