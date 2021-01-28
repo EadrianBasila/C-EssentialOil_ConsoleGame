@@ -4,6 +4,7 @@
 #include <time.h> 
 #include <string.h>
 
+//ascci arts from http://www.ascii-art.de/
 
 //price ng oils
 void freebie(int*lemonDrops, int*lavenderDrops, int*rosemaryDrops, int*mintDrops, int*clearMinds, int *energyBooster, int*diffuserCalming){
