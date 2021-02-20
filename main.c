@@ -972,7 +972,7 @@ void printMenu(){
     printf("\n {}  ======================================+ \n");
     printf(" ||        Oil-bularyo ON THE GO           | \n");    
     printf(" )(       CCPROG1 MACHINE PROJECT          | \n");
-    printf("|OO|       By: David Avellaneda            | \n");
+    printf("|OO|       By: Me lol :P                   | \n");
     printf("|__| ======================================+ \n");
 
     printf("\n================[Options Menu]==============\n");
